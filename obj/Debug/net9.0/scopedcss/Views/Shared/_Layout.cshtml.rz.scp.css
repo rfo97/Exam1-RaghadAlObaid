@@ -46,3 +46,10 @@ button.accept-policy[b-1ehrq4dwj1] {
   white-space: nowrap;
   line-height: 60px;
 }
+.frosted[b-1ehrq4dwj1] {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}

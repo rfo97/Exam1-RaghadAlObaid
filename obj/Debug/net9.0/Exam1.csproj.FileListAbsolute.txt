@@ -80,8 +80,6 @@ C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compress
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\nz1b7vpiiq-muycvpuwrr.gz
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\6dqgly95ru-87fc7y1x7t.gz
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\mmvonqif7c-mlv21k5csn.gz
-C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\xi3lw25eia-s0uiififdb.gz
-C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\1ls9ge1oeq-s0uiififdb.gz
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\staticwebassets.development.json
@@ -337,3 +335,5 @@ C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\bin\Debug\net9.0\ru\Micro
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\xi3lw25eia-7olwggu15f.gz
+C:\Users\ragha\Development\Coded\ASP\PIFSS\Exam1\Exam1\obj\Debug\net9.0\compressed\1ls9ge1oeq-7olwggu15f.gz
