@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Exam1.Models;
+using Microsoft.EntityFrameworkCore;
 namespace Exam1.Data
 {
     public class AppDbContext : DbContext
@@ -7,5 +8,8 @@ namespace Exam1.Data
         {
 
         }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Course> Courses { get; set; }
     }
 }
