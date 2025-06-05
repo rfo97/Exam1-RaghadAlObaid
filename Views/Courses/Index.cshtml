@@ -4,11 +4,62 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Courses</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-dark fw-bold">Create New</a>
 </p>
+<hr />
+<div class="row">
+    <div class="col">
+        <br />
+        <br />
+        <br />
+        <br />
+        <a asp-controller="Courses" asp-action="Index" class="btn btn-outline-success">All</a>
+    </div>
+    <div class="col">
+        @* <form asp-controller="Courses" asp-action="Index" method="get">
+            <p>
+                Filter by Instructor:
+                <select class="form-control" asp-items="ViewBag.AllInstructors">
+                    <option>Select a Instructor</option>
+                </select>
+                <br />
+                <input class="btn btn-outline-success" type="submit" value="Filter" name="searchStr" value="@ViewData["CurrentInstructorFilter"]" />
+            </p>
+        </form> *@
+
+        <form asp-controller="Courses" asp-action="Index" method="get">
+            <p>
+                Filter by Instructor:
+                <select   class="form-control" asp-items="ViewBag.AllInstructors">
+                    <option value="">Select an Instructor</option>
+                </select>
+                <br />
+                <input class="btn btn-outline-success" type="submit" value="Filter" />
+            </p>
+        </form>
+    </div>
+    <div class="col">
+        <form asp-controller="Courses" asp-action="Index" method="get">
+            <p>
+                Search by Title: <input type="text" name="searchStr" value="@ViewData["CurrentTitleFilter"]" class="form-control" />
+                <br />
+                <input class="btn btn-outline-success" type="submit" value="Search" />
+            </p>
+        </form>
+    </div>
+    <div class="col">
+        <form asp-controller="Courses" asp-action="Index" method="get">
+            <p>
+                Search by Description: <input type="text" name="searchStr" value="@ViewData["CurrentDescriptionFilter"]" class="form-control" />
+                <br />
+                <input class="btn btn-outline-success" type="submit" value="Search" />
+            </p>
+        </form>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>

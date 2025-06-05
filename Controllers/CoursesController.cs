@@ -13,11 +13,49 @@ namespace Exam1.Controllers
         {
             db = _db;
         }
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    var data = db.Courses.Include(i => i.Instructor);
+        //    return View(data);
+        //}
+        public IActionResult Index(string? searchStr, int? InstructorId)
         {
-            var data = db.Courses.Include(i => i.Instructor);
-            return View(data);
+            ViewBag.AllInstructors = new SelectList(db.Instructors, "Id", "FullName", InstructorId);
+
+            var data = db.Courses.Include(i => i.Instructor).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchStr))
+            {
+                var filteredByTitle = data.Where(p => p.Title.Contains(searchStr));
+                var filteredByInstructor = data.Where(c => c.Instructor.FullName.Contains(searchStr));
+                var filteredByDescription = data.Where(p => p.Description.Contains(searchStr));
+
+                if (filteredByTitle.Any())
+                {
+                    data = filteredByTitle;
+                    ViewData["CurrentTitleFilter"] = searchStr;
+                }
+                else if (filteredByInstructor.Any())
+                {
+                    data = filteredByInstructor;
+                    ViewData["CurrentInstructorFilter"] = searchStr;
+                }
+                else
+                {
+                    data = filteredByDescription;
+                    ViewData["CurrentDescriptionFilter"] = searchStr;
+                }
+            }
+
+            if (InstructorId.HasValue)
+            {
+                data = data.Where(c => c.InstructorId == InstructorId);
+                ViewData["CurrentInstructorFilter"] = InstructorId;
+            }
+
+            return View(data.ToList());
         }
+
 
         #region Read
         [HttpGet]
