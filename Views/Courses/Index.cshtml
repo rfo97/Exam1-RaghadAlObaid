@@ -19,27 +19,21 @@
         <a asp-controller="Courses" asp-action="Index" class="btn btn-outline-success">All</a>
     </div>
     <div class="col">
-        @* <form asp-controller="Courses" asp-action="Index" method="get">
-            <p>
-                Filter by Instructor:
-                <select class="form-control" asp-items="ViewBag.AllInstructors">
-                    <option>Select a Instructor</option>
-                </select>
-                <br />
-                <input class="btn btn-outline-success" type="submit" value="Filter" name="searchStr" value="@ViewData["CurrentInstructorFilter"]" />
-            </p>
-        </form> *@
 
-        <form asp-controller="Courses" asp-action="Index" method="get">
-            <p>
-                Filter by Instructor:
-                <select   class="form-control" asp-items="ViewBag.AllInstructors">
-                    <option value="">Select an Instructor</option>
-                </select>
-                <br />
-                <input class="btn btn-outline-success" type="submit" value="Filter" />
-            </p>
-        </form>
+        <form asp-action="Index" method="get" class="mb-3">
+    <label for="instructorFilter">Filter by Instructor:</label>
+    <select id="instructorFilter" name="InstructorId" class="form-control">
+        <option value="">Select Instructor</option>
+        @foreach (var instructor in ViewBag.AllInstructors)
+        {
+                    <option value="@instructor.Value" selected="@(ViewBag.SelectedInstructorId == instructor.Value)">
+                        @instructor.Text
+                    </option>
+        }
+    </select>
+    <br />
+    <button type="submit" class="btn btn-outline-success">Filter</button>
+    </form>
     </div>
     <div class="col">
         <form asp-controller="Courses" asp-action="Index" method="get">

@@ -13,21 +13,17 @@ namespace Exam1.Controllers
         {
             db = _db;
         }
-        //public IActionResult Index()
-        //{
-        //    var data = db.Courses.Include(i => i.Instructor);
-        //    return View(data);
-        //}
+       
         public IActionResult Index(string? searchStr, int? InstructorId)
         {
-            ViewBag.AllInstructors = new SelectList(db.Instructors, "Id", "FullName", InstructorId);
-
+            ViewBag.AllInstructors = new SelectList(db.Instructors, "Id", "FullName");
+            ViewBag.SelectedInstructorId = InstructorId?.ToString() ?? "";
             var data = db.Courses.Include(i => i.Instructor).AsQueryable();
 
             if (!string.IsNullOrEmpty(searchStr))
             {
                 var filteredByTitle = data.Where(p => p.Title.Contains(searchStr));
-                var filteredByInstructor = data.Where(c => c.Instructor.FullName.Contains(searchStr));
+                var filteredByInstructor = data.Where(c => c.InstructorId == InstructorId);
                 var filteredByDescription = data.Where(p => p.Description.Contains(searchStr));
 
                 if (filteredByTitle.Any())
@@ -47,15 +43,18 @@ namespace Exam1.Controllers
                 }
             }
 
-            if (InstructorId.HasValue)
+            else
             {
-                data = data.Where(c => c.InstructorId == InstructorId);
-                ViewData["CurrentInstructorFilter"] = InstructorId;
+                var coursesQuery = db.Courses.AsQueryable();
+                if (InstructorId.HasValue)
+                {
+                    coursesQuery = coursesQuery.Where(c => c.InstructorId == InstructorId.Value);
+                    data = coursesQuery;
+                }
+
             }
-
-            return View(data.ToList());
+                return View(data.ToList());
         }
-
 
         #region Read
         [HttpGet]
@@ -65,7 +64,12 @@ namespace Exam1.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            var course = db.Courses.Find(id);
+            var course = db.Courses
+                        .Include(i => i.Instructor)
+                        .Include(s => s.StudentCourses)
+                        .ThenInclude(sc => sc.Student)
+                        .FirstOrDefault(s => s.Id == id);
+
             if (course != null)
             {
                 return View(course);

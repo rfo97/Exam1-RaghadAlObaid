@@ -34,6 +34,26 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.City)
         </dd>
+        <dt class="col-sm-2">
+            Courses Enrolled
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.StudentCourses != null && Model.StudentCourses.Any())
+            {
+                <ul>
+                    @foreach (var course in Model.StudentCourses)
+                    {
+                        <li>
+                            <strong>@course.Course.Title</strong>: @course.Course.Description
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No courses enrolled yet.</p>
+            }
+        </dd>
     </dl>
 </div>
 <div>

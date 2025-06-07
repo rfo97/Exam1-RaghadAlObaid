@@ -1,0 +1,43 @@
+﻿@model Exam1.Models.ViewModels.EnrollViewModel
+@{
+    ViewData["Title"] = "EnrollInCourse";
+}
+
+<h2>Enroll @Model.Student.Name in Courses</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EnrollInCourse" method="post">
+            <input type="hidden" name="sid" value="@Model.Student.Id" />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Courses[0].Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Courses[0].Description)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Courses)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                <input type="checkbox" name="CoursesIds" value="@item.Id"
+                                       @(Model.EnrolledCoursesIds.Contains(item.Id) ? "checked disabled" : "") />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-success fw-bold">Save Enrollment</button>
+        </form>
+    </div>
+</div>

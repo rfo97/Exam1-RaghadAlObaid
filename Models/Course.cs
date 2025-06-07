@@ -15,9 +15,11 @@ namespace Exam1.Models
         [Range(0, 999.99)]
         public decimal Price { get; set; }
         public int Duration { get; set; }
-        
+        public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
+
         [ForeignKey("Instructor")]
         public int InstructorId { get; set; }
         public Instructor? Instructor { get; set; }
+
     }
 }

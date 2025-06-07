@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.Title</h1>
 
 <div>
-    <h4>Course</h4>
+    <h4>Course Details</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -44,9 +44,48 @@
             @Html.DisplayNameFor(model => model.Instructor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Instructor.Email)
+            @Html.DisplayFor(model => model.Instructor!.FullName)
         </dd>
     </dl>
+</div>
+<br />
+<h4>Students Enrolled</h4>
+<hr />
+<div class="row">
+    <div class="col-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Phone Number
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StudentCourses)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.Phone)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary fw-bold">Edit</a> |

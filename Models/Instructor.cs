@@ -11,5 +11,6 @@ namespace Exam1.Models
         [Required(ErrorMessage = "Enter Email Address")]
         public string Email { get; set; }
         public string Major { get; set; }
+        public ICollection<Course> Courses { get; set; } = new List<Course>();
     }
 }
